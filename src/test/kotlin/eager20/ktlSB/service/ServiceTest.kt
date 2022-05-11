@@ -3,7 +3,6 @@ package eager20.ktlSB.service
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import eager20.ktlSB.service.ServiceWork
 
 @SpringBootTest
 class ServiceTest {
