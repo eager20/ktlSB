@@ -18,12 +18,25 @@ class FileReadTest {
     @Test
     fun readFileUsingSpringBoot(){
         val resource: Resource = ClassPathResource("file.txt")
-        val lines = resource.inputStream.bufferedReader().readLines()
-        println(lines)
+        println( readPlatFile("file.txt").toString() )
 
     }
 
 
     fun readFileLineByLineUsingForEachLine(fileName: String)
             = File(fileName).forEachLine { println(it) }
+
+
+    fun readPlatFile(fileName: String):Map<String, List<String>>{
+        val resource: List<String> = ClassPathResource(fileName).inputStream.bufferedReader().readLines()
+        return resource.map {
+            val item = it.split(",")
+            Pair(item[0], item[1])
+        }.groupBy { it.first }
+            .map { Pair(it.key, convertPair(it.value)) }.toMap()
+    }
+
+    fun convertPair(src : List<Pair<String, String>>) : List<String>{
+        return src.map { it.second }.toList()
+    }
 }
