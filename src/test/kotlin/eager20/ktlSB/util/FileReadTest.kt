@@ -21,7 +21,7 @@ class FileReadTest {
 
     @Test
     fun readFileUsingSpringBoot(){
-        val rtn = serviceWork.parsing(ServiceWork.readPlatFile,"file.txt")
+        val rtn = serviceWork.parsing(ServiceWork.readingPlatFile,"file.txt")
         println( rtn.toString() )
         val rtn2 =
             rtn.map { Pair(it.key, it.value.size) }
