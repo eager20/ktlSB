@@ -11,7 +11,7 @@ class ServiceWork {
     }
 
     companion object {
-        val readPlatFile = { fileName: String ->
+        val readPlatFile : (String) -> Map<String, List<String>> = { fileName: String ->
             val resource: List<String> = ClassPathResource(fileName).inputStream.bufferedReader().readLines()
             resource.map {
                 val item = it.split(",")
