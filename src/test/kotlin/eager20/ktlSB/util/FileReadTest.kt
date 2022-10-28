@@ -1,42 +1,40 @@
 package eager20.ktlSB.util
 
+import eager20.ktlSB.service.ServiceWork
 import org.junit.jupiter.api.Test
-import org.springframework.core.io.ClassPathResource
-import org.springframework.core.io.Resource
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
 import java.io.File
 
-
+@SpringBootTest
 class FileReadTest {
+
+    @Autowired
+    final lateinit var serviceWork: ServiceWork
 
     @Test
     fun readFileUseingForEachLine(){
-        readFileLineByLineUsingForEachLine("/Users/eager30/Documents/WSP/ktlSB/src/main/resources/file.txt")
+        //serviceWork.readFileLineByLineUsingForEachLine("/Users/eager30/Documents/WSP/ktlSB/src/main/resources/file.txt")
 
     }
 
 
     @Test
     fun readFileUsingSpringBoot(){
-        val resource: Resource = ClassPathResource("file.txt")
-        println( readPlatFile("file.txt").toString() )
+        val rtn = serviceWork.parsing(ServiceWork.readPlatFile,"file.txt")
+        println( rtn.toString() )
+        val rtn2 =
+            rtn.map { Pair(it.key, it.value.size) }
+                .sortedWith(compareByDescending<Pair<String, Int>> { it.second }
+                    .then(compareBy { it.first }))
+                .map { it.first }.toList()
+        println(rtn2.toString())
 
     }
 
 
-    fun readFileLineByLineUsingForEachLine(fileName: String)
-            = File(fileName).forEachLine { println(it) }
 
 
-    fun readPlatFile(fileName: String):Map<String, List<String>>{
-        val resource: List<String> = ClassPathResource(fileName).inputStream.bufferedReader().readLines()
-        return resource.map {
-            val item = it.split(",")
-            Pair(item[0], item[1])
-        }.groupBy { it.first }
-            .map { Pair(it.key, convertPair(it.value)) }.toMap()
-    }
 
-    fun convertPair(src : List<Pair<String, String>>) : List<String>{
-        return src.map { it.second }.toList()
-    }
+
 }
