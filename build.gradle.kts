@@ -4,6 +4,7 @@ plugins {
 	id("org.springframework.boot") version "2.6.0"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.6.0"
+	kotlin("kapt") version "1.5.30"
 	kotlin("plugin.spring") version "1.6.0"
 }
 
@@ -30,6 +31,11 @@ dependencies {
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+
+	implementation("org.mapstruct:mapstruct:1.5.1.Final")
+	kapt("org.mapstruct:mapstruct-processor:1.5.1.Final")
+	kaptTest("org.mapstruct:mapstruct-processor:1.5.1.Final")
 
 }
 
