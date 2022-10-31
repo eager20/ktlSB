@@ -1,16 +1,11 @@
 package eager20.ktlSB.util
 
-import eager20.ktlSB.service.ServiceWork
+import eager20.ktlSB.enums.FileRead
+import eager20.ktlSB.utils.FileReadUtil.Companion.parsing
+//import eager20.ktlSB.utils.parsing // 최상위 함수!
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import java.io.File
 
-@SpringBootTest
 class FileReadTest {
-
-    @Autowired
-    final lateinit var serviceWork: ServiceWork
 
     @Test
     fun readFileUseingForEachLine(){
@@ -18,10 +13,10 @@ class FileReadTest {
 
     }
 
-
     @Test
     fun readFileUsingSpringBoot(){
-        val rtn = serviceWork.parsing(ServiceWork.readingPlatFile,"file.txt")
+        // 클래스 밖에 놓으면 최상위 함수로 아래와 같이 쓸수 있다.
+        val rtn = parsing(FileRead.FLAT.readingPlatFile,"file.txt")
         println( rtn.toString() )
         val rtn2 =
             rtn.map { Pair(it.key, it.value.size) }

@@ -12,20 +12,24 @@ class ServiceWork {
 
     companion object {
         // 람다로 만들어진 함수 변수는 ing 를 붙여서 동작하는것을 표현한다.
-        val readingPlatFile : (String) -> Map<String, List<String>> = { fileName: String ->
-            val resource: List<String> = ClassPathResource(fileName).inputStream.bufferedReader().readLines()
-            resource.map {
-                val item = it.split(",")
-                Pair(item[0], item[1])
-            }.groupBy { it.first }
-                .map { Pair(it.key, convertPair(it.value)) }
-                .toMap()
-        }
+
 
         private fun convertPair(src: List<Pair<String, String>>): List<String> {
             return src.map { it.second }.toList()
         }
 
+
+
+    }
+
+    val readingPlatFile : (String) -> Map<String, List<String>> = { fileName: String ->
+        val resource: List<String> = ClassPathResource(fileName).inputStream.bufferedReader().readLines()
+        resource.map {
+            val item = it.split(",")
+            Pair(item[0], item[1])
+        }.groupBy { it.first }
+            .map { Pair(it.key, convertPair(it.value)) }
+            .toMap()
     }
 
     fun parsing( parsing : (String) -> Map<String, List<String>>,
