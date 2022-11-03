@@ -2,8 +2,8 @@ package eager20.ktlSB.enums
 
 enum class FileRead  (val readingPlatFile : (String) -> Map<String, List<String>>)
 {
-    FLAT({ fileName: kotlin.String ->
-        val resource: kotlin.collections.List<kotlin.String> = org.springframework.core.io.ClassPathResource(fileName).inputStream.bufferedReader().readLines()
+    FLAT({ fileName: String ->
+        val resource: List<String> = org.springframework.core.io.ClassPathResource(fileName).inputStream.bufferedReader().readLines()
         resource.map {
             val item = it.split(",")
             kotlin.Pair(item[0], item[1])
@@ -13,13 +13,13 @@ enum class FileRead  (val readingPlatFile : (String) -> Map<String, List<String>
 
 
     }),
-    CSV_FILE ({fileName: kotlin.String ->
-        val resource: kotlin.collections.List<kotlin.String> = org.springframework.core.io.ClassPathResource(fileName).inputStream.bufferedReader().readLines()
+    CSV_FILE ({
+        val resource: List<String> = org.springframework.core.io.ClassPathResource(it).inputStream.bufferedReader().readLines()
         resource.map {
             val item = it.split(",")
-            kotlin.Pair(item[0], item[1])
+            Pair(item[0], item[1])
         }.groupBy { it.first }
-            .map { kotlin.Pair(it.key, convertPair(it.value)) }
+            .map { Pair(it.key, convertPair(it.value)) }
             .toMap()
     });
 
