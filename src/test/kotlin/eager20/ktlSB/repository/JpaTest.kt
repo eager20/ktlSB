@@ -9,7 +9,7 @@ import org.springframework.test.context.TestConstructor
 
 @SpringBootTest
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
-class JpaTest (val itemRespository: ItemRespository) {
+class JpaTest (val itemRespository: ItemRespository, val itemsQDRepo: ItemQDRepo) {
 
 
     @Test
@@ -31,5 +31,17 @@ class JpaTest (val itemRespository: ItemRespository) {
 
         val checkitem = itemRespository.findById(1L)
         println(checkitem.get().product)
+    }
+
+    @Test
+    fun jpaQueryDSLTest(){
+
+        val Items = Items(1L, "TEST01", 3000, 50)
+        itemRespository.save(Items)
+
+
+        val itemOne = itemsQDRepo.findOne(1L)
+        Assertions.assertThat(itemOne.dealno).isEqualTo(1)
+        println(itemOne.toString())
     }
 }

@@ -20,7 +20,12 @@ class Items (
 
     @Column(name = "remain")
     val remain: Int
-)
+
+) {
+    override fun toString(): String {
+        return "Items(dealno=$dealno, product='$product', amount=$amount, remain=$remain)"
+    }
+}
 //dealno INT ,
 //product VARCHAR(255) ,
 //amount INT ,
