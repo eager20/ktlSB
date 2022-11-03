@@ -17,7 +17,7 @@ class ItemQDRepo(
     }
 
     fun update(id:Long):Long{
-        val updateedId = queryFactory.update(items).set(items.product, "eager20").execute()
+        val updateedId = queryFactory.update(items).set(items.product, "eager20").where(items.dealno.eq(id)).execute()
         em.flush()
         em.clear()
         return updateedId

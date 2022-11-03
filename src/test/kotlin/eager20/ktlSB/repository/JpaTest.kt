@@ -51,10 +51,24 @@ class JpaTest (val itemRespository: ItemRespository, val itemsQDRepo: ItemQDRepo
 
         val Items = Items(1L, "TEST01", 3000, 50)
         itemRespository.save(Items)
-        val updatedDealNo = itemsQDRepo.update(1L)
+        val updatedCount = itemsQDRepo.update(1L)
 
-        val itemOne = itemsQDRepo.findOne(updatedDealNo)
+        itemRespository.findAll().forEach {
+            println("### ALL : $it")
+        }
+
+        println("## updatedDealNo=========> $updatedCount")
+        val itemOne = itemsQDRepo.findOne(1L)
         Assertions.assertThat(itemOne.product).isEqualTo("eager20")
         println("## RESULT=========> $itemOne")
+    }
+
+
+    @Test
+    fun jpaQueryDSLTest2(){
+
+        val itemOne = itemsQDRepo.findOne(200L)
+        Assertions.assertThat(itemOne.dealno).isEqualTo(200L)
+        println(itemOne.toString())
     }
 }
