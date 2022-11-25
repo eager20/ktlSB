@@ -29,6 +29,7 @@ https://github.com/technical-learn-room/ktor-learn
 - Tons of feature
 - Great documentation
 - More complicated API
+- Sample ( https://github.com/InsertKoinIO/koin-samples )
 
 ### Koin
 - Smaller
