@@ -18,3 +18,6 @@ kotlin_TEST
 ### JPA Test Coding~!
 
 ### QueryDSL 반영 테스트~
+
+Ktor 참조 GIT
+https://github.com/technical-learn-room/ktor-learn
