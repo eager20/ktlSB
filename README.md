@@ -29,13 +29,16 @@ https://github.com/technical-learn-room/ktor-learn
 - Tons of feature
 - Great documentation
 - More complicated API
-- Sample ( https://github.com/InsertKoinIO/koin-samples )
+- https://github.com/kosi-libs/Kodein
 
 ### Koin
 - Smaller
 - Less feature
 - Natural API
-
-### Github stars Kodein 1164 vs 1350 Koin
 - https://insert-koin.io/
-- https://github.com/kosi-libs/Kodein
+- Sample ( https://github.com/InsertKoinIO/koin-samples )
+
+### Github stars 
+- Kodein 1164 vs 1350 Koin
+
+
