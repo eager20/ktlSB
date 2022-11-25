@@ -25,16 +25,16 @@ https://github.com/technical-learn-room/ktor-learn
 ## DI 는 koin, kodein 두개가 있다.
 - koin이 더 경량화된 모듈인듯 한다.
 ### Kodein
-: Robust
-: Tons of feature
-: Great documentation
-: More complicated API
+- Robust
+- Tons of feature
+- Great documentation
+- More complicated API
 
-###Koin
-: Smaller
-: Less feature
-: Natural API
+### Koin
+- Smaller
+- Less feature
+- Natural API
 
-Github stars Kodein 1164 vs 1350 Koin
-https://insert-koin.io/
-https://github.com/kosi-libs/Kodein
+### Github stars Kodein 1164 vs 1350 Koin
+- https://insert-koin.io/
+- https://github.com/kosi-libs/Kodein
