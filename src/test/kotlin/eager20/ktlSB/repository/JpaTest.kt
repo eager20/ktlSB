@@ -17,7 +17,7 @@ class JpaTest (val itemRespository: ItemRespository, val itemsQDRepo: ItemQDRepo
     fun jpaTest(){
         val count = itemRespository.count()
 
-        Assertions.assertThat(count).isEqualTo(0)
+        Assertions.assertThat(count).isEqualTo(1)
     }
 
 
@@ -28,7 +28,7 @@ class JpaTest (val itemRespository: ItemRespository, val itemsQDRepo: ItemQDRepo
         itemRespository.save(Items)
         val count = itemRespository.count()
 
-        Assertions.assertThat(count).isEqualTo(1)
+        Assertions.assertThat(count).isEqualTo(2)
 
         val checkitem = itemRespository.findById(1L)
         println(checkitem.get().product)
